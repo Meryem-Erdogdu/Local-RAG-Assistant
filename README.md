@@ -85,7 +85,6 @@ CONTEXTAI/
 
 <img width="1901" height="1025" alt="Ekran görüntüsü 2026-08-15 142810" src="https://github.com/user-attachments/assets/0f541364-b766-401d-ac04-4149bcc0863b" />
 
-<img width="1896" height="1027" alt="image" src="https://github.com/user-attachments/assets/f1c803e6-033b-42b1-9ec6-681c216d34dd" />
 
 ## Kurulum ve Çalıştırma
 
@@ -94,8 +93,8 @@ Projeyi kendi ortamınızda çalıştırmak için aşağıdaki adımları izleye
 ### 1. Repoyu klonlayın
 
 ```bash
-git clone https://github.com/KULLANICI_ADIN/LOCAL_RAG_ASSISTANT.git
-cd LOCAL_RAG_ASSISTANT
+git clone https://github.com/Meryem-Erdogdu/Local-RAG-Assistant.git
+cd Local-RAG-Assistant
 ```
 
 ### 2. Gerekli kütüphaneleri yükleyin
