@@ -160,17 +160,5 @@ bir araya getirilmiştir.
 
 Bu proje **MIT License** ile lisanslanmıştır.
 
-## İletişim
-
-**Meryem Erdoğdu**
-
-GitHub: `https://github.com/KULLANICI_ADIN`
-
-LinkedIn: `https://www.linkedin.com/in/KULLANICI_ADIN`
-
----
-
-Bu proje; Retrieval-Augmented Generation, Local LLM, Vector Search ve doküman tabanlı yapay zeka uygulamalarının geliştirilmesi amacıyla hazırlanmıştır.
-
 
 <img width="1901" height="1025" alt="image" src="https://github.com/user-attachments/assets/476e581b-7068-442c-84c4-56140d131cbe" />
