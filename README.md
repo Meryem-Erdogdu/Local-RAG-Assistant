@@ -71,7 +71,7 @@ Bu yapı, belge içerisindeki ilgili bölümlerin bulunarak dil modeline bağlam
 ## Proje Yapısı
 
 ```text
-CONTEXTAI/
+Local RAG Assistant/
 ├── Local_RAG_Assistant.ipynb
 ├── app.py
 ├── guvenli_pdf_deposu/
