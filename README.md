@@ -5,14 +5,14 @@ Sistem; belge işleme, metin parçalama, embedding oluşturma, vektör arama ve 
 
 ## Öne Çıkan Özellikler
 
-* **Yerel RAG Mimarisi:** PDF belgelerinden alınan içerikler, embedding ve vektör arama süreçlerinden geçirilerek ilgili bilgiler dil modeline bağlam olarak sunulmaktadır.
-* **Yerel LLM Kullanımı:** Yanıt üretimi için **Qwen2.5-3B-Instruct** modeli kullanılmakta ve temel çıkarım süreci yerel/GPU ortamında gerçekleştirilmektedir.
+* **Yerel RAG Mimarisi:** PDF belgelerinden alınan içerikler, Türkçe dili özelinde efektif bir şekilde çalışan embedding ve vektör arama süreçlerinden geçirilerek ilgili bilgiler dil modeline bağlam olarak sunulmaktadır.
+* **Yerel LLM Kullanımı:** Yanıt üretimi için Türkçe dili özelinde efektif bir şekilde çalışan **Qwen2.5-3B-Instruct** modeli kullanılmakta ve temel çıkarım süreci Colab T4 yerel/GPU ortamında gerçekleştirilmektedir.
 * **FAISS ile Vektör Arama:** Belgelerden oluşturulan embedding'ler FAISS üzerinde indekslenerek kullanıcı sorusuyla en alakalı içeriklerin hızlı bir şekilde bulunması sağlanmaktadır.
 * **Çoklu PDF Desteği:** Birden fazla PDF aynı oturum içerisinde işlenebilmekte ve ortak bir vektör indeksinde kullanılabilmektedir.
-* **Bağlama Dayalı Yanıt Üretimi:** Sistem, modelin yalnızca sağlanan belge bağlamını kullanmasını sağlayarak dokümanlarda bulunmayan bilgilerin üretilmesini azaltmayı hedeflemektedir.
-* **Gradio Arayüzü:** PDF yükleme, soru-cevap ve kayıtların görüntülenmesi için kullanıcı dostu bir web arayüzü sunulmaktadır.
-* **SQLite ile Etkileşim Kaydı:** Kullanıcıların gerçekleştirdiği soru-cevap etkileşimleri SQLite veritabanında saklanmaktadır.
-* **Güvenli Dosya İşleme:** Yüklenen dosyalar `secure_filename` kullanılarak işlenmekte ve yalnızca PDF dosyalarının kabul edilmesi sağlanmaktadır.
+* **Bağlama Dayalı Yanıt Üretimi:** Sistem, modelin yalnızca sağlanan belge bağlamını kullanmasını sağlayarak dokümanlarda bulunmayan bilgilerin üretilmesini azaltmayı hedeflemektedir. (Alakalı olmayan yanıtlar sınırlandırılmış aynı zamanda bilgisi olmadığı noktada halüsinasyon verisi sunması engellenmiştir.)
+* **Gradio Arayüzü:** PDF yükleme, soru-cevap ve kayıtların görüntülenmesi için kullanıcı dostu ve hızlı bir web arayüzü sunulmaktadır.
+* **SQLite ile Etkileşim Kaydı:** Kullanıcıların gerçekleştirdiği soru-cevap etkileşimleri SQLite veritabanında saklanmakta ve Gradio arayüzü üzerinden cevap kayıtları incelenbilmektedir.
+* **Güvenli Dosya İşleme:** Yüklenen dosyalar `secure_filename` kullanılarak işlenmekte ve yalnızca PDF dosyalarının kabul edilmesi sağlanmaktadır. (Pdf dışı, fotoğraf - video gibi erişimler sonraki güncellemelerde eklenebilir.)
 * **GPU Optimizasyonu:** Model çıkarımı için `fp16` hassasiyeti ve `sdpa` attention gibi GPU optimizasyonlarından yararlanılmaktadır.
 
 ## RAG Pipeline
@@ -32,11 +32,11 @@ FAISS Vektör İndeksi
      ↓
 Retriever
      ↓
-Qwen2.5-3B-Instruct
+Qwen2.5-3B-Instruct (Türkçe odaklı)
      ↓
 Yanıt
      ↓
-SQLite Kayıt
+SQLite Kayıt (Aynı zamanda arayüz içi sorgulama aktifliği)
 ```
 
 Kullanıcı bir soru gönderdiğinde sistem, FAISS vektör indeksinde arama gerçekleştirerek en alakalı iki belge parçasını getirir. Bu içerikler ChatML formatındaki prompt içerisine bağlam olarak eklenir ve Qwen2.5-3B-Instruct modeli tarafından yanıt oluşturulur. Soru-cevap çifti daha sonra SQLite veritabanına kaydedilir.
@@ -48,10 +48,10 @@ PDF belgeleri `PyPDFLoader` kullanılarak işlenmekte ve metinler `RecursiveChar
 Mevcut yapılandırmada:
 
 * **Chunk Size:** 700 karakter
-* **Chunk Overlap:** 150 karakter
+* **Chunk Overlap:** 150 karakter (hızı artırmak için 150 karakter sınırı eklendi)
 * **Embedding Model:** `paraphrase-multilingual-mpnet-base-v2`
 * **Vector Store:** FAISS
-* **Retrieval:** En alakalı `k=2` içerik
+* **Retrieval:** En alakalı `k=2` içerik (hızı artırmak için k = 4 yerine 2 tercih edildi.)
 
 Bu yapı, belge içerisindeki ilgili bölümlerin bulunarak dil modeline bağlam olarak aktarılmasını sağlamaktadır.
 
@@ -62,9 +62,9 @@ Bu yapı, belge içerisindeki ilgili bölümlerin bulunarak dil modeline bağlam
 * **RAG Framework:** `LangChain`
 * **Vector Search:** `FAISS`
 * **Embedding:** `Sentence Transformers`
-* **Model Framework:** `Hugging Face Transformers`
+* **Model Framework:** `Hugging Face Transformers` (API kullanımı istenmediği için tercih edildi)
 * **PDF İşleme:** `PyPDF`
-* **Kullanıcı Arayüzü:** `Gradio`
+* **Kullanıcı Arayüzü:** `Gradio` (hızlı ve basit kullanım için tercih edildi)
 * **Veritabanı:** `SQLite`
 * **GPU / Deep Learning:** `PyTorch`, `CUDA`
 
@@ -156,6 +156,7 @@ bir araya getirilmiştir.
 * Docker desteği
 * Farklı yerel LLM modellerinin desteklenmesi
 * Production ortamına uygun deployment yapısının oluşturulması
+* Türkçe dili ( Veya bazı sondan eklemeli diller) bazında daha efektif bir token algılama sistemi oluşturulması için ekstra güncellemeler planlanması
 
 ## Lisans
 Bu proje **MIT License** ile lisanslanmıştır.
