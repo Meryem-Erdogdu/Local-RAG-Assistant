@@ -1,4 +1,4 @@
-# Local-RAG-Assistant
+# Local-RAG-Assistant 
 Bu proje, PDF belgeleri üzerinde çalışan, kullanıcıların yüklediği dokümanlar üzerinden doğal dilde soru sormasına ve ilgili içeriklere dayalı yanıtlar almasına olanak sağlayan, tamamen yerel bir **Retrieval-Augmented Generation (RAG)** uygulamasıdır.
 
 Sistem; belge işleme, metin parçalama, embedding oluşturma, vektör arama ve yerel Large Language Model kullanarak uçtan uca bir doküman tabanlı soru-cevap sistemi sunmaktadır.
