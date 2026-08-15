@@ -85,6 +85,8 @@ CONTEXTAI/
 
 <img width="1901" height="1025" alt="Ekran görüntüsü 2026-08-15 142810" src="https://github.com/user-attachments/assets/0f541364-b766-401d-ac04-4149bcc0863b" />
 
+<img width="1896" height="1027" alt="image" src="https://github.com/user-attachments/assets/f1c803e6-033b-42b1-9ec6-681c216d34dd" />
+
 ## Kurulum ve Çalıştırma
 
 Projeyi kendi ortamınızda çalıştırmak için aşağıdaki adımları izleyebilirsiniz.
@@ -159,6 +161,7 @@ bir araya getirilmiştir.
 ## Lisans
 
 Bu proje **MIT License** ile lisanslanmıştır.
+---
 
 
 <img width="1901" height="1025" alt="image" src="https://github.com/user-attachments/assets/476e581b-7068-442c-84c4-56140d131cbe" />
