@@ -156,6 +156,7 @@ bir araya getirilmiştir.
 * Docker desteği
 * Farklı yerel LLM modellerinin desteklenmesi
 * Production ortamına uygun deployment yapısının oluşturulması
+* Türkçe bazında daha efektif bir token algılama sistemi oluşturulması
 
 ## Lisans
 Bu proje **MIT License** ile lisanslanmıştır.
