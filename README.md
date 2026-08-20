@@ -59,13 +59,13 @@ Bu yapı, belge içerisindeki ilgili bölümlerin bulunarak dil modeline bağlam
 
 * **Programlama Dili:** `Python`
 * **Large Language Model:** `Qwen2.5-3B-Instruct`
-* **RAG Framework:** `LangChain`
+* **RAG Framework:** `LangChain` : Çoklu API entegrasyonu sağlanabilmesi için kullanıldı
 * **Vector Search:** `FAISS`
 * **Embedding:** `Sentence Transformers`
 * **Model Framework:** `Hugging Face Transformers` (API kullanımı istenmediği için tercih edildi)
 * **PDF İşleme:** `PyPDF`
 * **Kullanıcı Arayüzü:** `Gradio` (hızlı ve basit kullanım için tercih edildi)
-* **Veritabanı:** `SQLite`
+* **Veritabanı:** `SQLite` : python üzerinde çalışabilmesi için tercih edildi
 * **GPU / Deep Learning:** `PyTorch`, `CUDA`
 
 ## Proje Yapısı
